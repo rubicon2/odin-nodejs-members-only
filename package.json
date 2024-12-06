@@ -4,7 +4,7 @@
   "description": "https://www.theodinproject.com/lessons/node-path-nodejs-members-only",
   "main": "app.mjs",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "node --watch app.mjs"
   },
   "author": "",
   "license": "ISC",
@@ -18,6 +18,7 @@
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "connect-pg-simple": "^10.0.0",
+    "dotenv": "^16.4.7",
     "express": "^4.21.2",
     "express-session": "^1.18.1",
     "passport": "^0.7.0",
