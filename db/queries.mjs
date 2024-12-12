@@ -11,6 +11,13 @@ async function addUser(email, first_name, last_name, password) {
   );
 }
 
+async function getUserById(id) {
+  const { rows } = await pool.query('SELECT * FROM app_user WHERE id = $1', [
+    id,
+  ]);
+  return rows[0] || null;
+}
+
 async function getUserByEmail(email) {
   const { rows } = await pool.query(
     'SELECT * FROM app_user WHERE email = $1;',
@@ -19,4 +26,4 @@ async function getUserByEmail(email) {
   return rows[0] || null;
 }
 
-export { addUser, getUserByEmail };
+export { addUser, getUserById, getUserByEmail };

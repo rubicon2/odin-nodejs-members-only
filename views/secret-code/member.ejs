@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('../partials/head.ejs') %>
+  <body>
+    <%- include('../partials/nav.ejs') %>
+    <h1>Secret Code - Member</h1>
+    <form action="/secret-code/member" method="post">
+      <%- include('secret-code-form-fields.ejs') %>
+      <button type="submit">Submit</button>
+    </form>
+    <a href="/secret-code">Select a different type of code</a>
+  </body>
+</html>
