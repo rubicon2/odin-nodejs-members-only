@@ -3,6 +3,8 @@ import 'dotenv/config';
 
 const { Pool } = pg;
 
-export default new Pool({
+const pool = new Pool({
   connectionString: process.env.DB,
 });
+
+export default pool;
