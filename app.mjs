@@ -65,11 +65,12 @@ app.post('/log-out', (req, res, next) => {
 });
 
 app.use((req, res, next) => {
-  res.send('404 - page not found');
+  res.render('404', { title: 'Page not found', user: req.user });
 });
 
 app.use((error, req, res, next) => {
-  res.send('500 - error');
+  // res.send('500 - error');
+  res.render('error', { title: 'Error', user: req.user, error });
 });
 
 app.listen(PORT, () => console.log('Server listening on port', PORT));
