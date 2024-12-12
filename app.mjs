@@ -45,6 +45,10 @@ app.get('/', (req, res) => {
 });
 
 app.get('/log-in', (req, res) => {
+  // Stop user logging in if they are already logged in.
+  if (req.user) {
+    throw new Error('User is already logged in');
+  }
   res.render('log-in', { title: 'Login', user: req.user });
 });
 
