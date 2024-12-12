@@ -1,0 +1,21 @@
+<nav>
+  <ul>
+    <li>
+      <a href="/">Home</a>
+    </li>
+    <% if (!locals.user) { %>
+      <li>
+        <a href="/sign-up">Sign Up</a>
+      </li>
+    <% }; %>
+    <li>
+      <% if (!locals.user) { %>
+        <a href="/log-in">Log In</a>
+      <% } else { %>
+        <form action="/log-out" method="post">
+          <button type="submit">Log Out</button>
+        </form>
+      <% }; %>
+    </li>
+  </ul>
+</nav>
