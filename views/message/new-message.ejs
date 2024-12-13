@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('../partials/head.ejs') %>
+  <body>
+    <%- include('../partials/nav.ejs') %>
+    <form action="/message/new" method="post">
+      <%- include('./message-form-fields.ejs') %>
+      <button type="submit">Submit</button>
+    </form>
+  </body>
+</html>

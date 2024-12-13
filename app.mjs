@@ -3,6 +3,7 @@ import init from './passport.mjs';
 import signUpRouter from './routes/signUpRouter.mjs';
 import secretCodeRouter from './routes/secretCodeRouter.mjs';
 import adminRouter from './routes/adminRouter.mjs';
+import messageRouter from './routes/messageRouter.mjs';
 
 import express from 'express';
 import session from 'express-session';
@@ -43,9 +44,11 @@ app.use((req, res, next) => {
 app.use('/secret-code', secretCodeRouter);
 app.use('/sign-up', signUpRouter);
 app.use('/admin', adminRouter);
+app.use('/message', messageRouter);
 
 app.get('/', (req, res) => {
-  res.render('index', { title: 'Home', user: req.user });
+  res.status(301).redirect('/message');
+  // res.render('index', { title: 'Home', user: req.user });
 });
 
 app.get('/log-in', (req, res) => {

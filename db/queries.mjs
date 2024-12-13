@@ -49,7 +49,43 @@ async function setAdmin(id, is_admin) {
   ]);
 }
 
+async function addMessage(user_id, title, text) {
+  const now = new Date(Date.now()).toISOString();
+  await pool.query(
+    `INSERT INTO app_message (user_id, title, text, created_time)
+       VALUES ($1, $2, $3, $4)`,
+    [user_id, title, text, now],
+  );
+}
+
+async function deleteMessage(id) {
+  await pool.query('DELETE FROM app_message WHERE id = $1', [parseInt(id)]);
+}
+
+async function getMessages() {
+  const { rows } = await pool.query(
+    `SELECT
+      app_message.id,
+      user_id,
+      title,
+      text,
+      app_message.created_time,
+      first_name,
+      last_name
+     FROM app_message JOIN app_user ON app_message.user_id = app_user.id`,
+  );
+  return rows;
+}
+
+async function getMessageById(id) {
+  const { rows } = await pool.query('SELECT * FROM app_message WHERE id = $1', [
+    id,
+  ]);
+  return rows[0] || null;
+}
+
 export {
+  // Users
   addUser,
   deleteUser,
   getUsers,
@@ -57,4 +93,9 @@ export {
   getUserByEmail,
   setMember,
   setAdmin,
+  // Messages
+  addMessage,
+  deleteMessage,
+  getMessages,
+  getMessageById,
 };
