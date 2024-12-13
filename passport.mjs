@@ -18,6 +18,9 @@ function init(pool) {
       done(null, {
         id: user.id,
         first_name: user.first_name,
+        last_name: user.last_name,
+        is_member: user.is_member,
+        is_admin: user.is_admin,
       });
     } catch (error) {
       done(error);

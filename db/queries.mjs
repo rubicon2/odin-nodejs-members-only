@@ -11,6 +11,15 @@ async function addUser(email, first_name, last_name, password) {
   );
 }
 
+async function deleteUser(id) {
+  await pool.query('DELETE FROM app_user WHERE id = $1', [id]);
+}
+
+async function getUsers() {
+  const { rows } = await pool.query('SELECT * FROM app_user');
+  return rows;
+}
+
 async function getUserById(id) {
   const { rows } = await pool.query('SELECT * FROM app_user WHERE id = $1', [
     id,
@@ -26,4 +35,26 @@ async function getUserByEmail(email) {
   return rows[0] || null;
 }
 
-export { addUser, getUserById, getUserByEmail };
+async function setMember(id, is_member) {
+  await pool.query('UPDATE app_user SET is_member = $1 WHERE id = $2', [
+    is_member,
+    id,
+  ]);
+}
+
+async function setAdmin(id, is_admin) {
+  await pool.query('UPDATE app_user SET is_admin = $1 WHERE id = $2', [
+    is_admin,
+    id,
+  ]);
+}
+
+export {
+  addUser,
+  deleteUser,
+  getUsers,
+  getUserById,
+  getUserByEmail,
+  setMember,
+  setAdmin,
+};

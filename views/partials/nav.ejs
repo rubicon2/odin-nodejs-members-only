@@ -20,5 +20,10 @@
     <li>
       <a href="/secret-code">Secret Codes</a>
     </li>
+    <% if (locals.user && user.is_admin) { %>
+      <li>
+        <a href="/admin">Admin</a>
+      </li>
+    <% }; %>
   </ul>
 </nav>
