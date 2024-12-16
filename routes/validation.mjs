@@ -40,4 +40,9 @@ const validateSignUpData = [
     .withMessage('Passwords do not match'),
 ];
 
-export { validateSignUpData };
+const validateMessageData = [
+  body('title').trim().notEmpty().withMessage('Message title required'),
+  body('text').trim().notEmpty().withMessage('Message text required'),
+];
+
+export { validateSignUpData, validateMessageData };

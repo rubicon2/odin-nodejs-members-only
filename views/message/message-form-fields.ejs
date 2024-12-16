@@ -1,4 +1,4 @@
 <label for="title">Title: </label>
-<input type="text" name="title" id="title" required>
+<input type="text" name="title" id="title" required value="<%= locals.formData ? formData.title : '' %>">
 <label for="text">Message: </label>
-<textarea name="text" id="text" required></textarea>
+<textarea name="text" id="text" required><%= locals.formData ? formData.text : '' %></textarea>
