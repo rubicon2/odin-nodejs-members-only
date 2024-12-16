@@ -1,0 +1,10 @@
+<%= app_user.first_name + ' ' + app_user.last_name %>
+<form action="/admin/remove-member" method="post">
+  <button type="submit" name="id" value="<%= app_user.id %>" <%= app_user.is_member ? '' : 'disabled'%>>Remove Member</button>
+</form>
+<form action="/admin/remove-admin" method="post">
+  <button type="submit" name="id" value="<%= app_user.id %>"<%= app_user.is_admin ? '' : 'disabled' %>>Remove Admin</button>
+</form>
+<form action="/admin/delete-user" method="post">
+  <button type="submit" name="id" value="<%= app_user.id %>">Delete User</button>
+</form>

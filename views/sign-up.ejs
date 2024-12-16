@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('partials/head.ejs') %>
+<body>
+  <%- include('partials/nav.ejs') %>
+  <h1>Sign Up</h1>
+  <form action="/sign-up" method="post">
+    <%- include('partials/sign-up-form-fields.ejs') %>
+    <button type="submit">Sign up</button>
+  </form>
+  <%- include('partials/errors.ejs') %>
+</body>
+</html>

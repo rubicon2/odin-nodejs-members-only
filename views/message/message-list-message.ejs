@@ -1,0 +1,14 @@
+<div class="message-list--message">
+  <h2><%= message.title %></h2>
+  <% if (locals.user && user.is_member) { %>
+    <small>by <%= message.first_name %> <%= message.last_name %> on <%= new Intl.DateTimeFormat('en-GB', { weekday: 'short', day: 'numeric', month: 'numeric', year: 'numeric', hour: 'numeric', minute: 'numeric' }).format(message.created_time) %></small>
+  <% }; %>
+  <p>
+    <%= message.text %>
+  </p>
+  <% if (locals.user && user.is_admin) { %>
+    <form action="/message/delete" method="post">
+      <button type="submit" name="message_id" value="<%= message.id %>">Delete</button>
+    </form>
+  <% }; %>
+</div>
