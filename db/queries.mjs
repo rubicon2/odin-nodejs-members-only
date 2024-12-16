@@ -12,6 +12,8 @@ async function addUser(email, first_name, last_name, password) {
 }
 
 async function deleteUser(id) {
+  // app_messages.user_id ON DELETE CASCADE, no need to delete this user's messages manually.
+  // It is done automatically by the db.
   await pool.query('DELETE FROM app_user WHERE id = $1', [id]);
 }
 

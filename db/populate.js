@@ -25,7 +25,7 @@ const SQL = `
 
   CREATE TABLE IF NOT EXISTS app_message (
     id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
-    user_id INTEGER REFERENCES app_user (id) NOT NULL,
+    user_id INTEGER NOT NULL REFERENCES app_user (id) ON DELETE CASCADE,
     title VARCHAR (255) NOT NULL,
     text TEXT NOT NULL,
     created_time TIMESTAMP (6) NOT NULL
