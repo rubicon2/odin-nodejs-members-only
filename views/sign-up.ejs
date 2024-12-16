@@ -8,12 +8,6 @@
     <%- include('partials/sign-up-form-fields.ejs') %>
     <button type="submit">Sign up</button>
   </form>
-  <% if (locals.errors && errors.length > 0) { %>
-    <ul>
-    <% errors.forEach((error) => { %>
-      <li><%= error.msg %></li>
-    <% }); %>
-    </ul>
-  <% }; %>
+  <%- include('partials/errors.ejs') %>
 </body>
 </html>

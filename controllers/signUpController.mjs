@@ -4,10 +4,7 @@ import { validationResult } from 'express-validator';
 function getSignUp(req, res) {
   // Do it in this dodgy syntax so that if routeData does not exist, or property
   // on routeData does not exist, the destructured const will be undefined.
-  const { email, first_name, last_name, password, confirm_password } = {
-    ...req.session.routeData,
-  };
-  const errors = req.session.errors || [];
+  const { formData, errors } = req.session;
   // Clear out errors for possible next redirect to this page,
   // so they don't double up if the user has same validation error more than once.
   // And also the same errors won't appear if the user navigates away from the page and back again.
@@ -16,11 +13,7 @@ function getSignUp(req, res) {
   res.render('sign-up', {
     title: 'Sign Up',
     errors,
-    email,
-    first_name,
-    last_name,
-    password,
-    confirm_password,
+    formData,
   });
 }
 
@@ -35,7 +28,7 @@ async function postSignUp(req, res, next) {
     } else {
       // Need to keep data in session to load it back into the sign-up view.
       // Nothing more annoying than a form emptying due to a vaidation error!
-      req.session.routeData = {
+      req.session.formData = {
         email,
         first_name,
         last_name,
