@@ -7,7 +7,7 @@ const validateSignUpData = [
     .notEmpty()
     .withMessage('Email is a required field')
     .isEmail()
-    .withMessage('Must be in email format')
+    .withMessage('Email must be in email format')
     .custom(async (value) => {
       const existingUser = await getUserByEmail(value);
       if (existingUser) throw new Error('User with that email already exists');
@@ -17,13 +17,13 @@ const validateSignUpData = [
     .notEmpty()
     .withMessage('First name is a required field')
     .isAlpha()
-    .withMessage('A-Z are the only characters pemitted'),
+    .withMessage('First name must consist of alphabetical characters only'),
   body('last_name')
     .trim()
     .notEmpty()
     .withMessage('Last name is a required field')
     .isAlpha()
-    .withMessage('A-Z are the only characters pemitted'),
+    .withMessage('Last name must consist of alphabetical characters only'),
   body('password')
     .notEmpty()
     .withMessage('Password is a required field')
