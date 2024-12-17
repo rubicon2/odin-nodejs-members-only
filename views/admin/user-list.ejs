@@ -5,9 +5,9 @@
     <%- include('../partials/nav.ejs') %>
     <main class="container">
       <h1>User List</h1>
-      <ul>
+      <ul class="no-style flex-list">
         <% app_users.forEach((app_user) => { %>
-          <li>
+          <li class="flex-list--item">
             <%- include('./user-list-user.ejs', { app_user }) %>
           </li>
         <% }); %>

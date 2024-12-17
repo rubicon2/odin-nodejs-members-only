@@ -4,7 +4,8 @@
   --main-background-color: #f6f6f6;
   --main-accent-color: #c53c77;
   --main-accent-color--dark: #cd3b5d;
-  --shadow-color: #292929aa;
+  --shadow-color: #2929295c;
+  --shadow-accent-color: #c53c775c;
   // Basic settings
   color: var(--main-text-color);
   background-color: var(--main-background-color);
@@ -36,6 +37,51 @@ ol.no-style {
   max-width: 860px;
   margin: 0 auto;
   padding: 0 1rem;
+}
+
+.inset {
+  padding-left: 1rem !important;
+}
+
+.flex-list {
+  display: flex;
+  flex-direction: column;
+
+  .flex-list--item {
+    // Create an evenly spaced dividing line between messages.
+    margin-bottom: 1rem;
+    border-bottom: 2px solid var(--shadow-accent-color);
+    padding-bottom: 1rem;
+
+    header {
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+  }
+}
+
+.message-list--message {
+  display: grid;
+  grid-template-rows: repeat(4, min-content);
+
+  p {
+    margin-bottom: 0.5rem;
+  }
+}
+
+.user-list--user {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+
+  .user-list--user-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    button {
+      width: 100%;
+    }
+  }
 }
 
 .main-nav {
