@@ -162,3 +162,19 @@ ol.no-style {
     }
   }
 }
+
+.form {
+  display: grid;
+  grid-auto-rows: min-content;
+  gap: 1rem;
+  padding-bottom: 1rem;
+  max-width: 500px;
+
+  &.standard {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  &.message {
+    grid-template-columns: 1fr 2fr;
+  }
+}

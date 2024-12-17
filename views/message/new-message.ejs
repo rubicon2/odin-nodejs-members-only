@@ -5,7 +5,7 @@
     <%- include('../partials/nav.ejs') %>
     <main class="container">
       <h1 class="page-heading">New Message</h1>
-      <form action="/message/new" method="post">
+      <form action="/message/new" method="post" class="message form">
         <%- include('./message-form-fields.ejs') %>
         <button type="submit">Submit</button>
       </form>

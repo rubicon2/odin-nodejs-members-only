@@ -139,4 +139,18 @@ ol.no-style {
   font-weight: 900;
 }
 
+.form {
+  display: grid;
+  grid-auto-rows: min-content;
+  gap: 1rem;
+  padding-bottom: 1rem;
+  max-width: 500px;
+}
+.form.standard {
+  grid-template-columns: 1fr 1fr;
+}
+.form.message {
+  grid-template-columns: 1fr 2fr;
+}
+
 /*# sourceMappingURL=style.css.map */
