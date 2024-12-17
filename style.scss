@@ -36,7 +36,16 @@ ol.no-style {
 .container {
   max-width: 860px;
   margin: 0 auto;
-  padding: 0 1rem;
+  padding: 1rem;
+
+  &.no-v-padding {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+}
+
+.page-heading {
+  padding-bottom: 1rem;
 }
 
 .inset {

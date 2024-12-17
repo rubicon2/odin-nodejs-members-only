@@ -4,7 +4,7 @@
   <body>
     <%- include('../partials/nav.ejs') %>
     <main class="container">
-      <h1>Messages</h1>
+      <h1 class="page-heading">Messages</h1>
       <% if (locals.messages && messages.length > 0) { %>
         <ul class="no-style flex-list">
           <% messages.forEach((message) => { %>
