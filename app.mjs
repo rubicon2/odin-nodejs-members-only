@@ -57,11 +57,26 @@ app.get('/log-in', (req, res) => {
   if (req.user) {
     throw new Error('User is already logged in');
   }
-  res.render('log-in', { title: 'Login', user: req.user });
+  res.render('log-in', {
+    title: 'Login',
+    user: req.user,
+    formData: req.session.formData,
+    messages: req.session.messages,
+  });
+  delete req.session.formData;
+  delete req.session.messages;
 });
 
 app.post(
   '/log-in',
+  // Save the form data into the session, can be used in failure redirect.
+  (req, res, next) => {
+    req.session.formData = {
+      email: req.body.email,
+      password: req.body.password,
+    };
+    next();
+  },
   passport.authenticate('local', {
     successRedirect: '/',
     failureRedirect: '/log-in',

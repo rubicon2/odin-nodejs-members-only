@@ -2,19 +2,17 @@ import { addUser } from '../db/queries.mjs';
 import { validationResult } from 'express-validator';
 
 function getSignUp(req, res) {
-  // Do it in this dodgy syntax so that if routeData does not exist, or property
-  // on routeData does not exist, the destructured const will be undefined.
   const { formData, errors } = req.session;
-  // Clear out errors for possible next redirect to this page,
-  // so they don't double up if the user has same validation error more than once.
-  // And also the same errors won't appear if the user navigates away from the page and back again.
-  delete req.session.routeData;
-  delete req.session.errors;
   res.render('sign-up', {
     title: 'Sign Up',
     errors,
     formData,
   });
+  // Clear out errors for possible next redirect to this page,
+  // so they don't double up if the user has same validation error more than once.
+  // And also the same errors won't appear if the user navigates away from the page and back again.
+  delete req.session.formData;
+  delete req.session.errors;
 }
 
 async function postSignUp(req, res, next) {

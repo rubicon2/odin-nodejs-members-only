@@ -7,11 +7,12 @@
       <h1 class="page-heading">Log In</h1>
       <form action="/log-in" method="post" class="standard form">
         <label for="email">Email: </label>
-        <input type="email" name="email" id="email" required>
+        <input type="email" name="email" id="email" required value="<%= locals.formData ? formData.email : '' %>">
         <label for="password">Password: </label>
-        <input type="password" name="password" id="password" required>
+        <input type="password" name="password" id="password" required value="<%= locals.formData ? formData.password : '' %>">
         <button type="submit">Log in</button>
       </form>
+      <%- include('partials/messages.ejs') %>
     </main>
   </body>
 </html>
