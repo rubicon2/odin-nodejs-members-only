@@ -78,3 +78,6 @@ h6 {
 button {
   cursor: pointer;
 }
+button:disabled {
+  cursor: not-allowed;
+}
