@@ -3,20 +3,22 @@
   <%- include('../partials/head.ejs') %>
   <body>
     <%- include('../partials/nav.ejs') %>
-    <h1>Messages</h1>
-    <% if (locals.messages && messages.length > 0) { %>
-      <ul>
-        <% messages.forEach((message) => { %>
-          <li>
-            <%- include('./message-list-message.ejs', { message }) %>
-          </li>
-        <% }); %>
-      </ul>
-    <% } else { %>
-      No messages found.
-    <% }; %>
-    <% if (locals.user && (user.is_member || user.is_admin)) { %>
-      <a href="/message/new">Create new message</a>
-    <% }; %>
+    <main class="container">
+      <h1>Messages</h1>
+      <% if (locals.messages && messages.length > 0) { %>
+        <ul>
+          <% messages.forEach((message) => { %>
+            <li>
+              <%- include('./message-list-message.ejs', { message }) %>
+            </li>
+          <% }); %>
+        </ul>
+      <% } else { %>
+        No messages found.
+      <% }; %>
+      <% if (locals.user && (user.is_member || user.is_admin)) { %>
+        <a href="/message/new">Create new message</a>
+      <% }; %>
+    </main>
   </body>
 </html>

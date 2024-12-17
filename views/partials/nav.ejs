@@ -1,21 +1,16 @@
-<nav>
-  <ul>
+<nav class="main-nav">
+  <ul class="no-style container">
     <li>
       <a href="/">Home</a>
     </li>
     <% if (!locals.user) { %>
       <li>
-        <a href="/sign-up">Sign Up</a>
+        <a href="/sign-up" data-text="sign up">Sign Up</a>
       </li>
       <li>
         <a href="/log-in">Log In</a>
       </li>
     <% } else { %>
-      <li>
-        <form action="/log-out" method="post">
-          <button type="submit">Log Out</button>
-        </form>
-      </li>
       <li>
         <a href="/secret-code">Secret Codes</a>
       </li>
@@ -24,6 +19,11 @@
           <a href="/admin">Admin</a>
         </li>
       <% }; %>
+      <li>
+        <form action="/log-out" method="post">
+          <button type="submit" class="no-style">Log Out</button>
+        </form>
+      </li>
     <% }; %>
   </ul>
 </nav>

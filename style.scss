@@ -1,0 +1,82 @@
+:root {
+  // Variables
+  --main-text-color: #353535;
+  --main-background-color: #f6f6f6;
+  --main-accent-color: #c53c77;
+  --main-accent-color--dark: #cd3b5d;
+  --shadow-color: #292929aa;
+  // Basic settings
+  color: var(--main-text-color);
+  background-color: var(--main-background-color);
+  font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Barlow', Arial, Helvetica, sans-serif;
+}
+
+button.no-style {
+  border: none;
+  background-color: transparent;
+  padding: 0;
+}
+
+ul.no-style, 
+ol.no-style {
+  list-style: none;
+  padding: 0;
+}
+
+.container {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.main-nav {
+  background-color: pink;
+  font-size: 1.1rem;
+
+  ul {
+    display: grid;
+    // Create cols for all nav items.
+    grid-template-columns: repeat(4, 1fr);
+    // Do not try to use 'place-items: center' here as links and buttons will shrink to min size. 
+    // Want links and buttons to take up entire grid space, not shrink down!
+    // So align text to center instead.
+    text-align: center;
+  }
+
+  li {
+    display: flex;
+
+    // Link/button fills whole section of navbar - so the whole section can be clicked, not just the text link.
+    a,
+    form,
+    button {
+      width: 100%;
+    }
+
+    a,
+    button {
+      padding: 0.5rem 0;
+      color: var(--main-text-color);
+      text-decoration: none;
+      font-weight: 500;
+
+      transition: background-color 0.4s, color 0.6s, font-weight 0.5s;
+
+      &:hover {
+        background-color: var(--main-accent-color--dark);
+        color: white;
+        cursor: pointer;
+        font-weight: 700;
+      }
+    }
+  }
+}
