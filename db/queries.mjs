@@ -18,7 +18,9 @@ async function deleteUser(id) {
 }
 
 async function getUsers() {
-  const { rows } = await pool.query('SELECT * FROM app_user');
+  const { rows } = await pool.query(
+    'SELECT * FROM app_user ORDER BY last_name, first_name',
+  );
   return rows;
 }
 
@@ -74,7 +76,8 @@ async function getMessages() {
       app_message.created_time,
       first_name,
       last_name
-     FROM app_message JOIN app_user ON app_message.user_id = app_user.id`,
+     FROM app_message JOIN app_user ON app_message.user_id = app_user.id
+     ORDER BY app_message.created_time DESC`,
   );
   return rows;
 }
