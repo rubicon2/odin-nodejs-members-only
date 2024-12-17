@@ -3,11 +3,14 @@
 <%- include('partials/head.ejs') %>
 <body>
   <%- include('partials/nav.ejs') %>
-  <h1>Sign Up</h1>
-  <form action="/sign-up" method="post">
-    <%- include('partials/sign-up-form-fields.ejs') %>
-    <button type="submit">Sign up</button>
-  </form>
-  <%- include('partials/errors.ejs') %>
+  <main class="container">
+    <h1 class="page-heading">Sign Up</h1>
+    <p class="p-padded">All fields are required.</p>
+    <form action="/sign-up" method="post" class="standard form">
+      <%- include('partials/sign-up-form-fields.ejs') %>
+      <button type="submit">Sign up</button>
+    </form>
+    <%- include('partials/errors.ejs') %>
+  </main>
 </body>
 </html>

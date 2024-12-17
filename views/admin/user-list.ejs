@@ -3,13 +3,15 @@
   <%- include('../partials/head.ejs') %>
   <body>
     <%- include('../partials/nav.ejs') %>
-    <h1>User List</h1>
-    <ul>
-      <% app_users.forEach((app_user) => { %>
-        <li>
-          <%- include('./user-list-user.ejs', { app_user }) %>
-        </li>
-      <% }); %>
-    </ul>
+    <main class="container">
+      <h1 class="page-heading">User List</h1>
+      <ul class="no-style flex-list">
+        <% app_users.forEach((app_user) => { %>
+          <li class="flex-list--item">
+            <%- include('./user-list-user.ejs', { app_user }) %>
+          </li>
+        <% }); %>
+      </ul>
+    </main>
   </body>
 </html>

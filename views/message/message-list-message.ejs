@@ -1,8 +1,10 @@
 <div class="message-list--message">
-  <h2><%= message.title %></h2>
-  <% if (locals.user && user.is_member) { %>
-    <small>by <%= message.first_name %> <%= message.last_name %> on <%= new Intl.DateTimeFormat('en-GB', { weekday: 'short', day: 'numeric', month: 'numeric', year: 'numeric', hour: 'numeric', minute: 'numeric' }).format(message.created_time) %></small>
-  <% }; %>
+  <header>
+    <h2><%= message.title %></h2>
+    <% if (locals.user && user.is_member) { %>
+      <small>by <%= message.first_name %> <%= message.last_name %> on <%= new Intl.DateTimeFormat('en-GB', { weekday: 'short', day: 'numeric', month: 'numeric', year: 'numeric', hour: 'numeric', minute: 'numeric' }).format(message.created_time) %></small>
+    <% }; %>
+  </header>
   <p>
     <%= message.text %>
   </p>

@@ -3,10 +3,12 @@
   <%- include('partials/head.ejs') %>
   <body>
     <%- include('partials/nav.ejs') %>
-    <% if (locals.user) { %>
-      <h1>Welcome, <%= user.first_name %>!</h1>
-    <% } else { %>
-      <h1>Welcome! Feel free to sign up.</h1>
-    <% }; %>
+    <main class="container">
+      <% if (locals.user) { %>
+        <h1>Welcome, <%= user.first_name %>!</h1>
+      <% } else { %>
+        <h1>Welcome! Feel free to sign up.</h1>
+      <% }; %>
+    </main>
   </body>
 </html>

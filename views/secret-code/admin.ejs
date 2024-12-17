@@ -3,11 +3,13 @@
 <%- include('../partials/head.ejs') %>
   <body>
     <%- include('../partials/nav.ejs') %>
-    <h1>Secret Code - Admin</h1>
-    <form action="/secret-code/admin" method="post">
-      <%- include('secret-code-form-fields.ejs') %>
-      <button type="submit">Submit</button>
-    </form>
-    <a href="/secret-code">Select a different type of code</a>
+    <main class="container">
+      <h1 class="page-heading">Secret Code - Admin</h1>
+      <form action="/secret-code/admin" method="post" class="standard form">
+        <%- include('secret-code-form-fields.ejs') %>
+        <button type="submit">Submit</button>
+      </form>
+      <a href="/secret-code">Select a different type of code</a>
+    </main>
   </body>
 </html>

@@ -4,7 +4,8 @@
   "description": "https://www.theodinproject.com/lessons/node-path-nodejs-members-only",
   "main": "app.mjs",
   "scripts": {
-    "dev": "node --watch app.mjs"
+    "dev": "node --watch app.mjs",
+    "sass": "sass --watch style.scss public/style.css"
   },
   "author": "",
   "license": "ISC",
@@ -13,7 +14,8 @@
     "eslint": "^9.16.0",
     "eslint-config-prettier": "^9.1.0",
     "globals": "^15.13.0",
-    "prettier": "^3.4.2"
+    "prettier": "^3.4.2",
+    "sass": "^1.83.0"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
