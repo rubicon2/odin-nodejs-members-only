@@ -59,7 +59,7 @@ ol.no-style {
   display: grid;
   grid-template-rows: repeat(4, min-content);
 }
-.message-list--message p {
+.message-list--message p:not(:last-child) {
   margin-bottom: 0.5rem;
 }
 
