@@ -4,7 +4,7 @@
   --main-background-color: #f6f6f6;
   --main-accent-color: #c53c77;
   --main-accent-color--dark: #cd3b5d;
-  --shadow-color: #2929295c;
+  --shadow-color: #29292927;
   --shadow-accent-color: #c53c775c;
   // Basic settings
   color: var(--main-text-color);
@@ -87,6 +87,8 @@ ol.no-style {
 .main-nav {
   background-color: pink;
   font-size: 1.1rem;
+
+  box-shadow: 5px 5px 20px 5px var(--shadow-color);
 
   ul {
     display: grid;
