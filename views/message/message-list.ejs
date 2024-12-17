@@ -6,9 +6,9 @@
     <main class="container">
       <h1>Messages</h1>
       <% if (locals.messages && messages.length > 0) { %>
-        <ul>
+        <ul class="no-style flex-list">
           <% messages.forEach((message) => { %>
-            <li>
+            <li class="flex-list--item">
               <%- include('./message-list-message.ejs', { message }) %>
             </li>
           <% }); %>
