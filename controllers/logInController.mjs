@@ -3,12 +3,12 @@ function getLogIn(req, res, next) {
   if (req.user) {
     throw new Error('User is already logged in');
   }
-  const { formData, messages } = req.session;
+  const { formData, errors } = req.session;
   res.render('log-in', {
     title: 'Login',
     user: req.user,
     formData,
-    messages,
+    errors,
   });
   next();
 }
