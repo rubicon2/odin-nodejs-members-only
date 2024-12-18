@@ -13,14 +13,4 @@ function getLogIn(req, res, next) {
   next();
 }
 
-function postLogIn(req, res, next) {
-  // Save the form data into the session, can be used in failure redirect.
-  req.session.formData = {
-    email: req.body.email,
-    password: req.body.password,
-  };
-  // Call passport.authenticate in next stop on the route.
-  next();
-}
-
-export { getLogIn, postLogIn };
+export { getLogIn };

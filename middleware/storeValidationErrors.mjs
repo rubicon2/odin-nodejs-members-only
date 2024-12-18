@@ -1,6 +1,6 @@
 import { validationResult } from 'express-validator';
 
-function storeFormErrors(req, res, next) {
+function storeValidationErrors(req, res, next) {
   const result = validationResult(req);
   // Structure data so we can put errors next to relevant form ields.
   req.session.errors = result.array().reduce(
@@ -16,4 +16,4 @@ function storeFormErrors(req, res, next) {
   next();
 }
 
-export default storeFormErrors;
+export default storeValidationErrors;
