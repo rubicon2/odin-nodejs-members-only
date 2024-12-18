@@ -67,6 +67,14 @@ ol.no-style {
   }
 }
 
+.flex {
+  display: flex;
+}
+
+.space-between {
+  justify-content: space-between;
+}
+
 .page-heading {
   padding-bottom: 1rem;
 }
@@ -181,4 +189,10 @@ ol.no-style {
   &.message {
     grid-template-columns: 1fr 3fr;
   }
+}
+
+.form--error {
+  color: red;
+  font-size: 0.9rem;
+  text-align: right;
 }

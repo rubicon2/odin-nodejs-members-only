@@ -29,7 +29,6 @@ async function postSignUp(req, res, next) {
         password,
         confirm_password,
       };
-      req.session.errors = result.array();
       res.status(400).redirect('/sign-up');
     }
   } catch (error) {

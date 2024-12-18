@@ -1,10 +1,35 @@
-<label for="email">Email: </label>
-<input type="email" name="email" id="email" required value="<%= locals.formData ? formData.email : '' %>">
-<label for="first_name">First name: </label>
-<input type="text" name="first_name" id="first_name" required value="<%= locals.formData ? formData.first_name : '' %>">
-<label for="last_name">Last name: </label>
-<input type="text" name="last_name" id="last_name" required value="<%= locals.formData ? formData.last_name : '' %>">
-<label for="password">Password: </label>
-<input type="password" name="password" id="password" required value="<%= locals.formData ? formData.password : '' %>">
-<label for="confirm_password">Confirm password: </label>
-<input type="password" name="confirm_password" id="confirm_password" required value="<%= locals.formData ? formData.confirm_password : '' %>">
+<div>
+  <div class="flex space-between">
+    <label for="email">Email: </label>
+    <input type="email" name="email" id="email" required value="<%= locals.formData ? formData.email : '' %>">
+  </div>
+  <%- include('./form-error.ejs', {message: locals?.errors?.email ? errors.email : ''}) %>
+</div>
+<div>
+  <div class="flex space-between">
+    <label for="first_name">First name: </label>
+    <input type="text" name="first_name" id="first_name" required value="<%= locals.formData ? formData.first_name : '' %>">
+  </div>
+  <%- include('./form-error.ejs', {message: locals?.errors?.first_name ? errors.first_name : '' }) %>
+</div>
+<div>
+  <div class="flex space-between">
+    <label for="last_name">Last name: </label>
+    <input type="text" name="last_name" id="last_name" required value="<%= locals.formData ? formData.last_name : '' %>">
+  </div>
+  <%- include('./form-error.ejs', {message: locals?.errors?.last_name ? errors.last_name : '' }) %>
+</div>
+<div>
+  <div class="flex space-between">
+    <label for="password">Password: </label>
+    <input type="password" name="password" id="password" required value="<%= locals.formData ? formData.password : '' %>">
+  </div>
+  <%- include('./form-error.ejs', {message: locals?.errors?.password ? errors.password : '' }) %>
+</div>
+<div>
+  <div class="flex space-between">
+    <label for="confirm_password">Confirm password: </label>
+    <input type="password" name="confirm_password" id="confirm_password" required value="<%= locals.formData ? formData.confirm_password : '' %>">
+  </div>
+  <%- include('./form-error.ejs', {message: locals?.errors?.confirm_password ? errors.confirm_password : '' }) %>
+</div>

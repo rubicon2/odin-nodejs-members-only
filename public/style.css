@@ -61,6 +61,14 @@ ol.no-style {
   padding-bottom: 0;
 }
 
+.flex {
+  display: flex;
+}
+
+.space-between {
+  justify-content: space-between;
+}
+
 .page-heading {
   padding-bottom: 1rem;
 }
@@ -155,6 +163,12 @@ ol.no-style {
 }
 .form.message {
   grid-template-columns: 1fr 3fr;
+}
+
+.form--error {
+  color: red;
+  font-size: 0.9rem;
+  text-align: right;
 }
 
 /*# sourceMappingURL=style.css.map */
