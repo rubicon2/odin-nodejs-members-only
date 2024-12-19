@@ -17,7 +17,7 @@ async function postSignUp(req, res, next) {
     const { email, first_name, last_name, password } = req.body;
     if (result.isEmpty()) {
       await addUser(email, first_name, last_name, password);
-      res.status(404).redirect('/');
+      res.status(303).redirect('/');
     } else {
       res.status(400).redirect('/sign-up');
     }
