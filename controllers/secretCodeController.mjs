@@ -8,24 +8,31 @@ function getSecretCodeSelect(req, res) {
   });
 }
 
-function getMemberCodeForm(req, res) {
+function getMemberCodeForm(req, res, next) {
+  const { formData, errors } = req.session;
   res.render('secret-code/member', {
     title: 'Member Code Entry',
     user: req.user,
-    messages: req.session.messages,
+    formData,
+    errors,
   });
+  next();
 }
 
-function getAdminCodeForm(req, res) {
+function getAdminCodeForm(req, res, next) {
+  const { formData, errors } = req.session;
   res.render('secret-code/admin', {
     title: 'Admin Code Entry',
     user: req.user,
-    messages: req.session.messages,
+    formData,
+    errors,
   });
+  next();
 }
 
-function getSuccess(req, res) {
+function getSuccess(req, res, next) {
   res.render('secret-code/success', { title: 'Success', user: req.user });
+  next();
 }
 
 async function postMemberCodeForm(req, res, next) {
@@ -43,8 +50,8 @@ async function postMemberCodeForm(req, res, next) {
         res.status(303).redirect('/secret-code/success');
       }
     }
-    if (!req.session.messages) req.session.messages = [];
-    req.session.messages.push('The code entered was incorrect');
+    if (!req.session.errors) req.session.errors = {};
+    req.session.errors.secret_code = 'The code entered was incorrect';
     res.status(401).redirect('/secret-code/member');
   } catch (error) {
     next(error);
@@ -67,8 +74,8 @@ async function postAdminCodeForm(req, res, next) {
         res.status(303).redirect('/secret-code/success');
       }
     }
-    if (!req.session.messages) req.session.messages = [];
-    req.session.messages.push('The code entered was incorrect');
+    if (!req.session.errors) req.session.errors = {};
+    req.session.errors.secret_code = 'The code entered was incorrect';
     res.status(401).redirect('/secret-code/admin');
   } catch (error) {
     next(error);

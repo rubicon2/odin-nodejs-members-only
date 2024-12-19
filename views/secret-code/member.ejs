@@ -5,9 +5,11 @@
     <%- include('../partials/nav.ejs') %>
     <main class="container">
       <h1 class="page-heading">Secret Code - Member</h1>
-      <form action="/secret-code/member" method="post" class="standard form">
+      <form action="/secret-code/member" method="post" class="form">
         <%- include('secret-code-form-fields.ejs') %>
-        <button type="submit">Submit</button>
+        <div>
+          <button type="submit">Submit</button>
+        </div>
       </form>
       <a href="/secret-code">Select a different type of code</a>
     </main>
