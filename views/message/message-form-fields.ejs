@@ -1,4 +1,14 @@
-<label for="title">Title: </label>
-<input type="text" name="title" id="title" required value="<%= locals.formData ? formData.title : '' %>">
-<label for="text">Message: </label>
-<textarea name="text" id="text" rows="10" required><%= locals.formData ? formData.text : '' %></textarea>
+<div>
+  <div class="grid message-field">
+    <label for="title">Title: </label>
+    <input type="text" name="title" id="title" value="<%= locals.formData ? formData.title : '' %>">
+  </div>
+  <%- include('../partials/form-error.ejs', { message: locals?.errors?.title ? errors.title : '' }) %>
+</div>
+<div>
+  <div class="grid message-field">
+    <label for="text">Message: </label>
+    <textarea name="text" id="text" rows="10"><%= locals.formData ? formData.text : '' %></textarea>
+  </div>
+  <%- include('../partials/form-error.ejs', { message: locals?.errors?.text ? errors.text : '' }) %>
+</div>

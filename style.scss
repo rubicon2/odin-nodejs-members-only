@@ -71,6 +71,14 @@ ol.no-style {
   display: flex;
 }
 
+.grid {
+  display: grid;
+
+  &.message-field {
+    grid-template-columns: 1fr 3fr;
+  }
+}
+
 .space-between {
   justify-content: space-between;
 }

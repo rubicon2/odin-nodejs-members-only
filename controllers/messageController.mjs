@@ -22,6 +22,7 @@ function getNewMessage(req, res, next) {
     formData,
     errors,
   });
+  next();
 }
 
 async function postNewMessage(req, res, next) {
@@ -33,13 +34,6 @@ async function postNewMessage(req, res, next) {
       await db.addMessage(user_id, title, text);
       res.status(303).redirect('/message');
     } else {
-      // Need to keep data in session to load it back into the new-message view.
-      // Nothing more annoying than a form emptying due to a vaidation error!
-      req.session.formData = {
-        title,
-        text,
-      };
-      req.session.errors = result.array();
       res.status(400).redirect('/message/new');
     }
   } catch (error) {
