@@ -8,7 +8,10 @@
     <p class="p-padded">All fields are required.</p>
     <form action="/sign-up" method="post" class="form">
       <%- include('partials/sign-up-form-fields.ejs') %>
-      <button type="submit">Sign up</button>
+      <!-- Wrap button in div so it doesn't take up whole width of flex container. -->
+      <div>
+        <button type="submit">Sign up</button>
+      </div>
     </form>
     <%- include('partials/errors.ejs') %>
   </main>
