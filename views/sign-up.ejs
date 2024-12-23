@@ -1,19 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
-<%- include('partials/head.ejs') %>
-<body>
-  <%- include('partials/nav.ejs') %>
-  <main class="container">
-    <h1 class="page-heading">Sign Up</h1>
-    <p class="p-padded">All fields are required.</p>
-    <form action="/sign-up" method="post" class="form" onsubmit="validateSignUpForm(event)" novalidate>
-      <%- include('partials/sign-up-form-fields.ejs') %>
-      <!-- Wrap button in div so it doesn't take up whole width of flex container. -->
-      <div>
-        <button type="submit">Sign up</button>
-      </div>
-    </form>
-    <%- include('partials/errors.ejs') %>
-  </main>
-</body>
+  <%- include('partials/head.ejs') %>
+  <body>
+    <%- include('partials/nav.ejs') %>
+    <main class="container">
+      <h1 class="page-heading">Sign Up</h1>
+      <p class="p-padded">All fields are required.</p>
+      <form action="/sign-up" method="post" class="form" onsubmit="validateSignUpForm(event)" novalidate>
+        <%- include('partials/sign-up-form-fields.ejs') %>
+        <!-- Wrap button in div so it doesn't take up whole width of flex container. -->
+        <div>
+          <button type="submit">Sign up</button>
+        </div>
+      </form>
+      <%- include('partials/errors.ejs') %>
+    </main>
+    <script src="/sign-up.js" defer></script>
+  </body>
 </html>

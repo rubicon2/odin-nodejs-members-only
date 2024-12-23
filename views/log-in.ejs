@@ -5,15 +5,15 @@
     <%- include('partials/nav.ejs') %>
     <main class="container">
       <h1 class="page-heading">Log In</h1>
-      <form action="/log-in" method="post" class="form">
-        <div>
+      <form action="/log-in" method="post" class="form" onsubmit="validateLogInForm(event)" novalidate>
+        <div id="email-section">
           <div class="flex space-between">
             <label for="email">Email: </label>
             <input type="email" name="email" id="email" required value="<%= locals.formData ? formData.email : '' %>">
           </div>
           <%- include('partials/form-error.ejs', {message: locals?.errors?.email ? errors.email : '' }) %>
         </div>
-        <div>
+        <div id="password-section">
           <div class="flex space-between">
             <label for="password">Password: </label>
             <input type="password" name="password" id="password" required value="<%= locals.formData ? formData.password : '' %>">
@@ -26,5 +26,6 @@
       </form>
       <%- include('partials/errors.ejs') %>
     </main>
+    <script src="/log-in.js" defer></script>
   </body>
 </html>
