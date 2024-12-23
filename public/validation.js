@@ -11,11 +11,13 @@ function validateEmail(formElement) {
   const isValid = formElement.input.checkValidity();
   // Set error message.
   const { validity } = formElement.input;
+  formElement.input.classList.add('invalid');
   if (validity.valueMissing) {
     formElement.error.textContent = 'Email required';
   } else if (validity.typeMismatch) {
     formElement.error.textContent = 'Email must be in email format';
   } else {
+    formElement.input.classList.remove('invalid');
     formElement.error.textContent = '';
   }
   return isValid;
@@ -24,12 +26,14 @@ function validateEmail(formElement) {
 function validateFirstName(formElement) {
   const isValid = formElement.input.checkValidity();
   const { validity } = formElement.input;
+  formElement.input.classList.add('invalid');
   if (validity.valueMissing) {
     formElement.error.textContent = 'First name required';
   } else if (validity.patternMismatch) {
     formElement.error.textContent =
       'First name must consist of letters, single spaces and hyphens only';
   } else {
+    formElement.input.classList.remove('invalid');
     formElement.error.textContent = '';
   }
   return isValid;
@@ -38,12 +42,14 @@ function validateFirstName(formElement) {
 function validateLastName(formElement) {
   const isValid = formElement.input.checkValidity();
   const { validity } = formElement.input;
+  formElement.input.classList.add('invalid');
   if (validity.valueMissing) {
     formElement.error.textContent = 'Last name required';
   } else if (validity.patternMismatch) {
     formElement.error.textContent =
       'Last name must consist of letters, single spaces and hyphens only';
   } else {
+    formElement.input.classList.remove('invalid');
     formElement.error.textContent = '';
   }
   return isValid;
@@ -52,12 +58,14 @@ function validateLastName(formElement) {
 function validatePassword(formElement) {
   const isValid = formElement.input.checkValidity();
   const { validity } = formElement.input;
+  formElement.input.classList.add('invalid');
   if (validity.valueMissing) {
     formElement.error.textContent = 'Password required';
   } else if (validity.patternMismatch) {
     formElement.error.textContent =
       'Password is not strong enough. It should be at least 8 characters with a mix of uppercase and lowercase letters, digits and symbols - at least one of each';
   } else {
+    formElement.input.classList.remove('invalid');
     formElement.error.textContent = '';
   }
   return isValid;
@@ -71,12 +79,14 @@ function validateConfirmPassword(
   const { validity } = confirmPasswordFormElement.input;
   const doPasswordsMatch =
     passwordFormElement.input.value === confirmPasswordFormElement.input.value;
+  confirmPasswordFormElement.input.classList.add('invalid');
   if (validity.valueMissing) {
     confirmPasswordFormElement.error.textContent = 'Confirm password required';
   } else if (!doPasswordsMatch) {
     confirmPasswordFormElement.error.textContent = 'Passwords do not match';
     return false;
   } else {
+    confirmPasswordFormElement.input.classList.remove('invalid');
     confirmPasswordFormElement.error.textContent = '';
   }
   return isValid;
@@ -85,9 +95,11 @@ function validateConfirmPassword(
 function validateRequiredField(formElement, errorMessage) {
   const isValid = formElement.input.checkValidity();
   const { validity } = formElement.input;
+  formElement.input.classList.add('invalid');
   if (validity.valueMissing) {
     formElement.error.textContent = errorMessage;
   } else {
+    formElement.input.classList.remove('invalid');
     formElement.error.textContent = '';
   }
   return isValid;

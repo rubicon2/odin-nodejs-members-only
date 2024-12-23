@@ -39,6 +39,14 @@ button:disabled {
   background-color: var(--disabled-color);
 }
 
+.invalid {
+  background-color: pink;
+  background-image: url("/error.svg");
+  background-repeat: no-repeat;
+  background-size: 1.5rem;
+  background-position: top right;
+}
+
 button.no-style {
   border: none;
   background-color: transparent;
