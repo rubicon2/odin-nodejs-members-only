@@ -18,7 +18,14 @@ function addBlurListeners() {
   });
 
   password.input.addEventListener('blur', () => {
-    handleInputBlur(password.input, () => validatePassword(password));
+    handleInputBlur(password.input, () => {
+      validatePassword(password);
+      // If user is editing this password after typing in confirm password field, make that listen for changes too.
+      // This stops the error being shown unless the user has typed something in the confirm password field.
+      if (confirmPassword.input.value !== '') {
+        validateConfirmPassword(confirmPassword, password);
+      }
+    });
   });
 
   confirmPassword.input.addEventListener('blur', () => {
