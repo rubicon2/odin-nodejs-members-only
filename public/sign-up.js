@@ -6,19 +6,21 @@ const confirmPassword = getFormElements('confirm-password-section');
 
 function addBlurListeners() {
   email.input.addEventListener('blur', () => {
-    handleInputBlur(email.input, () => validateEmail(email));
+    validateOnInputUntilValid(email.input, () => validateEmail(email));
   });
 
   firstName.input.addEventListener('blur', () => {
-    handleInputBlur(firstName.input, () => validateFirstName(firstName));
+    validateOnInputUntilValid(firstName.input, () =>
+      validateFirstName(firstName),
+    );
   });
 
   lastName.input.addEventListener('blur', () => {
-    handleInputBlur(lastName.input, () => validateLastName(lastName));
+    validateOnInputUntilValid(lastName.input, () => validateLastName(lastName));
   });
 
   password.input.addEventListener('blur', () => {
-    handleInputBlur(password.input, () => {
+    validateOnInputUntilValid(password.input, () => {
       validatePassword(password);
       // If user is editing this password after typing in confirm password field, make that listen for changes too.
       // This stops the error being shown unless the user has typed something in the confirm password field.
@@ -29,7 +31,7 @@ function addBlurListeners() {
   });
 
   confirmPassword.input.addEventListener('blur', () => {
-    handleInputBlur(confirmPassword.input, () =>
+    validateOnInputUntilValid(confirmPassword.input, () =>
       validateConfirmPassword(confirmPassword, password),
     );
   });
@@ -42,14 +44,32 @@ function validateSignUpForm(event) {
   // Errrrrrrrrrr need to do list of errors first. WHOOPS!
   event.preventDefault();
 
-  const emailValid = validateEmail(email);
-  const firstNameValid = validateFirstName(firstName);
-  const lastNameValid = validateLastName(lastName);
-  const passwordValid = validatePassword(password);
-  const confirmPasswordValid = validateConfirmPassword(
-    confirmPassword,
-    password,
+  const emailValid = validateOnInputUntilValid(email.input, () =>
+    validateEmail(email),
   );
+
+  const firstNameValid = validateOnInputUntilValid(firstName.input, () =>
+    validateFirstName(firstName),
+  );
+
+  const lastNameValid = validateOnInputUntilValid(lastName.input, () =>
+    validateLastName(lastName),
+  );
+
+  const passwordValid = validateOnInputUntilValid(password.input, () => {
+    validatePassword(password);
+    // If user is editing this password after typing in confirm password field, make that listen for changes too.
+    // This stops the error being shown unless the user has typed something in the confirm password field.
+    if (confirmPassword.input.value !== '') {
+      validateConfirmPassword(confirmPassword, password);
+    }
+  });
+
+  const confirmPasswordValid = validateOnInputUntilValid(
+    confirmPassword.input,
+    () => validateConfirmPassword(confirmPassword, password),
+  );
+
   // If all form inputs validate, submit the form.
   if (
     emailValid &&

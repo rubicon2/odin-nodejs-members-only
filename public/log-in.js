@@ -5,11 +5,11 @@ const passwordRequiredErrorMsg = 'Password is a required field... obviously';
 
 function addBlurListeners() {
   email.input.addEventListener('blur', () => {
-    handleInputBlur(email.input, () => validateEmail(email));
+    validateOnInputUntilValid(email.input, () => validateEmail(email));
   });
 
   password.input.addEventListener('blur', () => {
-    handleInputBlur(password.input, () =>
+    validateOnInputUntilValid(password.input, () =>
       validateRequiredField(password, passwordRequiredErrorMsg),
     );
   });
@@ -20,11 +20,14 @@ addBlurListeners();
 function validateLogInForm(event) {
   event.preventDefault();
 
-  const isEmailValid = validateEmail(email);
-  const isPasswordValid = validateRequiredField(
-    password,
-    passwordRequiredErrorMsg,
+  const isEmailValid = validateOnInputUntilValid(email.input, () =>
+    validateEmail(email),
   );
+
+  const isPasswordValid = validateOnInputUntilValid(password.input, () =>
+    validateRequiredField(password, passwordRequiredErrorMsg),
+  );
+
   if (isEmailValid && isPasswordValid) {
     event.currentTarget.submit();
   }

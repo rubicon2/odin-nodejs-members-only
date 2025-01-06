@@ -105,10 +105,10 @@ function validateRequiredField(formElement, errorMessage) {
   return isValid;
 }
 
-function handleInputBlur(input, validationFn) {
-  // Field only displays an error and listens for changes once the user leaves the field with incorrect value.
-  // Then it will listen on each input and update the error until the input validates.
-  // Then it will stop listening for the input until the user leaves the field, at which point it will check.
+function validateOnInputUntilValid(input, validationFn) {
+  // Validation function will run once when this function is called.
+  // If the validation function returns false (i.e. fails), then it will listen and validate on every input change.
+  // Once the validation returns true (i.e. succeeds), then it will stop listening for changes.
   // The validationFn is expected to handle showing an error, etc.
   const removeOnValidInput = () => {
     if (validationFn()) {
@@ -116,7 +116,11 @@ function handleInputBlur(input, validationFn) {
     }
   };
 
-  if (!validationFn()) {
+  const initialValidationResult = validationFn();
+  if (!initialValidationResult) {
     input.addEventListener('input', removeOnValidInput);
   }
+
+  // Return initial validation result in case calling code needs to know about it.
+  return initialValidationResult;
 }

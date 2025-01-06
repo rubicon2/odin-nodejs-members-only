@@ -14,13 +14,13 @@ const textRequiredErrorMsg = 'Text is a required field';
 
 function addBlurListeners() {
   title.input.addEventListener('blur', () => {
-    handleInputBlur(title.input, () =>
+    validateOnInputUntilValid(title.input, () =>
       validateRequiredField(title, titleRequiredErrorMsg),
     );
   });
 
   text.input.addEventListener('blur', () => {
-    handleInputBlur(text.input, () =>
+    validateOnInputUntilValid(text.input, () =>
       validateRequiredField(text, textRequiredErrorMsg),
     );
   });
@@ -31,8 +31,14 @@ addBlurListeners();
 function validateNewMessageForm(event) {
   event.preventDefault();
 
-  const isTitleValid = validateRequiredField(title, titleRequiredErrorMsg);
-  const isTextValid = validateRequiredField(text, textRequiredErrorMsg);
+  const isTitleValid = validateOnInputUntilValid(title.input, () =>
+    validateRequiredField(title, titleRequiredErrorMsg),
+  );
+
+  const isTextValid = validateOnInputUntilValid(text.input, () => {
+    validateRequiredField(text, textRequiredErrorMsg);
+  });
+
   if (isTitleValid && isTextValid) {
     event.currentTarget.submit();
   }
