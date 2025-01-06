@@ -84,6 +84,8 @@ function validateConfirmPassword(
     confirmPasswordFormElement.error.textContent = 'Confirm password required';
   } else if (!doPasswordsMatch) {
     confirmPasswordFormElement.error.textContent = 'Passwords do not match';
+    // Validity may be ok, but we will return false manually here instead of
+    // isValid at the end of the function, as the passwords do not match.
     return false;
   } else {
     confirmPasswordFormElement.input.classList.remove('invalid');
