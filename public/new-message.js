@@ -31,12 +31,12 @@ addBlurListeners();
 function validateNewMessageForm(event) {
   event.preventDefault();
 
-  const isTitleValid = validateOnInputUntilValid(title.input, () =>
-    validateRequiredField(title, titleRequiredErrorMsg),
-  );
+  const isTitleValid = validateOnInputUntilValid(title.input, () => {
+    return validateRequiredField(title, titleRequiredErrorMsg);
+  });
 
   const isTextValid = validateOnInputUntilValid(text.input, () => {
-    validateRequiredField(text, textRequiredErrorMsg);
+    return validateRequiredField(text, textRequiredErrorMsg);
   });
 
   if (isTitleValid && isTextValid) {

@@ -6,74 +6,83 @@ const confirmPassword = getFormElements('confirm-password-section');
 
 function addBlurListeners() {
   email.input.addEventListener('blur', () => {
-    validateOnInputUntilValid(email.input, () => validateEmail(email));
+    validateOnInputUntilValid(email.input, () => {
+      return validateEmail(email);
+    });
   });
 
   firstName.input.addEventListener('blur', () => {
-    validateOnInputUntilValid(firstName.input, () =>
-      validateFirstName(firstName),
-    );
+    validateOnInputUntilValid(firstName.input, () => {
+      return validateFirstName(firstName);
+    });
   });
 
   lastName.input.addEventListener('blur', () => {
-    validateOnInputUntilValid(lastName.input, () => validateLastName(lastName));
+    validateOnInputUntilValid(lastName.input, () => {
+      return validateLastName(lastName);
+    });
   });
 
   password.input.addEventListener('blur', () => {
     validateOnInputUntilValid(password.input, () => {
-      validatePassword(password);
-      // If user is editing this password after typing in confirm password field, check validity.
-      // Checking for blank stops the error being shown unless the user has already typed
-      // something in the confirm password field.
-      if (confirmPassword.input.value !== '') {
-        // If confirmPassword no longer matches password, listen for changes.
-        // If confirmPassword has not blurred, or was previously correct,
-        // there will be no input event listener, so we will add one here.
-        validateOnInputUntilValid(confirmPassword.input, () =>
-          validateConfirmPassword(confirmPassword, password),
-        );
-      }
+      return validatePassword(password);
     });
   });
 
   confirmPassword.input.addEventListener('blur', () => {
-    validateOnInputUntilValid(confirmPassword.input, () =>
-      validateConfirmPassword(confirmPassword, password),
-    );
+    // As soon as confirm password input has lost focus, we
+    // will check the confirm password is valid and also
+    // upon any further input. We will not stop listening
+    // even if it is correct, unlike all the other blur listeners.
+    validateConfirmPassword(confirmPassword, password);
+    confirmPassword.input.addEventListener('input', () => {
+      validateConfirmPassword(confirmPassword, password);
+    });
   });
 }
 
 addBlurListeners();
+
+// When password input is changed, if there is already something in confirmPassword input, check to see if it matches.
+password.input.addEventListener('input', () => {
+  // Checking for blank stops the error being shown unless the user has already typed
+  // something in the confirm password field.
+  if (confirmPassword.input.value !== '') {
+    validateConfirmPassword(confirmPassword, password);
+  }
+});
 
 function validateSignUpForm(event) {
   // Clear list of errors.
   // Errrrrrrrrrr need to do list of errors first. WHOOPS!
   event.preventDefault();
 
-  const emailValid = validateOnInputUntilValid(email.input, () =>
-    validateEmail(email),
-  );
+  const emailValid = validateOnInputUntilValid(email.input, () => {
+    return validateEmail(email);
+  });
 
-  const firstNameValid = validateOnInputUntilValid(firstName.input, () =>
-    validateFirstName(firstName),
-  );
+  const firstNameValid = validateOnInputUntilValid(firstName.input, () => {
+    return validateFirstName(firstName);
+  });
 
-  const lastNameValid = validateOnInputUntilValid(lastName.input, () =>
-    validateLastName(lastName),
-  );
+  const lastNameValid = validateOnInputUntilValid(lastName.input, () => {
+    return validateLastName(lastName);
+  });
 
   const passwordValid = validateOnInputUntilValid(password.input, () => {
-    validatePassword(password);
     // If user is editing this password after typing in confirm password field, make that listen for changes too.
     // This stops the error being shown unless the user has typed something in the confirm password field.
     if (confirmPassword.input.value !== '') {
       validateConfirmPassword(confirmPassword, password);
     }
+    return validatePassword(password);
   });
 
   const confirmPasswordValid = validateOnInputUntilValid(
     confirmPassword.input,
-    () => validateConfirmPassword(confirmPassword, password),
+    () => {
+      return validateConfirmPassword(confirmPassword, password);
+    },
   );
 
   // If all form inputs validate, submit the form.
