@@ -1,9 +1,9 @@
-<% if (locals.errors) { %>
-  <ul>
-    <% errors.forEach((error) => { %>
+<ul id="error-list">
+  <% if (locals.errors) { %>
+    <% errors.array.forEach((error) => { %>
       <li>
-        <%= error.msg %>
+        <%= error %>
       </li>
     <% }); %>
-  </ul>
-<% }; %>
+  <% }; %>
+</ul>

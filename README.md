@@ -4,5 +4,5 @@ https://www.theodinproject.com/lessons/node-path-nodejs-members-only
 
 ## To Do List
 
-- Style project
-- Improve form feedback (highlight offending fields in red, add an icon, etc.)
+- Fix error list at bottom of forms. Does not update upon user input, unlike the individual fields.
+- Deploy project!

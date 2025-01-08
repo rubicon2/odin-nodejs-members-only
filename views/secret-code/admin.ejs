@@ -5,11 +5,14 @@
     <%- include('../partials/nav.ejs') %>
     <main class="container">
       <h1 class="page-heading">Secret Code - Admin</h1>
-      <form action="/secret-code/admin" method="post" class="standard form">
+      <form action="/secret-code/admin" method="post" class="form" onsubmit="validateSecretCodeForm(event)" novalidate>
         <%- include('secret-code-form-fields.ejs') %>
-        <button type="submit">Submit</button>
+        <div>
+          <button type="submit">Submit</button>
+        </div>
       </form>
       <a href="/secret-code">Select a different type of code</a>
     </main>
+    <script src="/secret-code.js" defer></script>
   </body>
 </html>

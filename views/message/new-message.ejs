@@ -5,11 +5,14 @@
     <%- include('../partials/nav.ejs') %>
     <main class="container">
       <h1 class="page-heading">New Message</h1>
-      <form action="/message/new" method="post" class="message form">
+      <form action="/message/new" method="post" class="form" novalidate onsubmit="validateNewMessageForm(event)">
         <%- include('./message-form-fields.ejs') %>
-        <button type="submit">Submit</button>
+        <div>
+          <button type="submit">Submit</button>
+        </div>
       </form>
       <%- include('../partials/errors.ejs') %>
     </main>
+    <script src="/new-message.js" defer></script>
   </body>
 </html>
