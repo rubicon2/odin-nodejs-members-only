@@ -1,10 +1,20 @@
 function storePassportErrors(req, res, next) {
   // Turn passport errors into a data structure consistent with form validation errors.
   // This way, we can re-use the errors view instead of having a separate one for passport messages.
-  // But it is rather annoying that we can't store what field the error relates to.
-  // Trying to pass anything other than a string as a message just doesn't work.
-  const array = req.session.messages ? [...req.session.messages] : [];
-  req.session.errors = { array };
+
+  // In case there are no messages, this will stop array map throwing an error.
+  if (!req.session.messages) req.session.messages = [];
+
+  // Each message is a JSON string due to passport only allowing string messages.
+  const array = req.session.messages.map((message) => JSON.parse(message));
+  const obj = array.reduce((obj, current) => {
+    return {
+      ...obj,
+      [current.path]: current.msg,
+    };
+  }, {});
+
+  req.session.errors = { ...obj, array };
   delete req.session.messages;
   req.session.save();
   next();
