@@ -11,14 +11,14 @@
             <label for="email">Email: </label>
             <input type="email" name="email" id="email" required value="<%= locals.formData ? formData.email : '' %>" class="<%= locals?.errors?.email ? 'invalid' : '' %>">
           </div>
-          <%- include('partials/form-error.ejs', {message: locals?.errors?.email ? errors.email : '' }) %>
+          <%- include('partials/form-error.ejs', { label: 'log in email error', message: locals?.errors?.email ? errors.email : '' }) %>
         </div>
         <div id="password-section">
           <div class="flex space-between">
             <label for="password">Password: </label>
             <input type="password" name="password" id="password" required value="<%= locals.formData ? formData.password : '' %>" class="<%= locals?.errors?.password ? 'invalid' : '' %>">
           </div>
-          <%- include('partials/form-error.ejs', {message: locals?.errors?.password ? errors.password : '' }) %>
+          <%- include('partials/form-error.ejs', { label: 'log in password error', message: locals?.errors?.password ? errors.password : '' }) %>
         </div>
         <div>
           <button type="submit">Log in</button>
