@@ -4,6 +4,7 @@
   "description": "https://www.theodinproject.com/lessons/node-path-nodejs-members-only",
   "main": "app.mjs",
   "scripts": {
+    "start": "node app.mjs",
     "dev": "node --watch app.mjs",
     "sass": "sass --watch style.scss public/style.css"
   },
