@@ -47,7 +47,7 @@ async function postMemberCodeForm(req, res, next) {
         await pool.query('UPDATE app_user SET is_member = true WHERE id = $1', [
           user.id,
         ]);
-        res.status(303).redirect('/secret-code/success');
+        return res.status(303).redirect('/secret-code/success');
       }
     }
     if (!req.session.errors) req.session.errors = {};
@@ -71,7 +71,7 @@ async function postAdminCodeForm(req, res, next) {
           'UPDATE app_user SET is_admin = true, is_member = true WHERE id = $1',
           [user.id],
         );
-        res.status(303).redirect('/secret-code/success');
+        return res.status(303).redirect('/secret-code/success');
       }
     }
     if (!req.session.errors) req.session.errors = {};
